@@ -1,7 +1,9 @@
 import './App.css';
-import Books from "./components/Books.js";
-import About from "./components/About.js";
-import Navbar from './components/Navbar.js';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Books from "./components/pages/Books.js";
+import About from "./components/pages/About.js";
+import Navbar from './components/pages/Navbar.js';
+import Register from './components/pages/Register.js'
 
 const books = [
   {
@@ -21,10 +23,16 @@ const books = [
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <About />
-      <h1>Book App</h1>
-      <Books books={books}/>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<Navbar />}>
+            <Route index element={<About />}/>
+            <Route path="books" element={<Books books={books}/>}/>
+            <Route path="register" element={<Register />}/>
+          </Route>
+        </Routes>
+      </BrowserRouter>
+
     </div>
   );
 }
