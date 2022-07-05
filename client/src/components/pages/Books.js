@@ -1,9 +1,10 @@
-const user = {
-  id: 22222,
-  username: "cathy123"
-}
+import { useContext } from "react";
+import UserContext from "../../context/userContext.js";
+
 
 const Books = (props) => {
+  const { user } = useContext(UserContext);
+
   return (
     <div>
       <h2>{user.username}'s Favorite Books</h2>

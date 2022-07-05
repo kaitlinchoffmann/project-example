@@ -4,6 +4,7 @@ import Books from "./components/pages/Books.js";
 import About from "./components/pages/About.js";
 import Navbar from './components/pages/Navbar.js';
 import Register from './components/pages/Register.js'
+import { UserProvider } from './context/userContext';
 
 const books = [
   {
@@ -23,15 +24,17 @@ const books = [
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route element={<Navbar />}>
-            <Route index element={<About />}/>
-            <Route path="books" element={<Books books={books}/>}/>
-            <Route path="register" element={<Register />}/>
-          </Route>
-        </Routes>
-      </BrowserRouter>
+      <UserProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route element={<Navbar />}>
+              <Route index element={<About />}/>
+              <Route path="books" element={<Books books={books}/>}/>
+              <Route path="register" element={<Register />}/>
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </UserProvider>
 
     </div>
   );
